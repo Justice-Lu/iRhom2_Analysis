@@ -1,0 +1,9 @@
+# ignore RNAseq files 
+/RNAseq_files/
+/RNAseq_out/ 
+/samplesheets/
+
+/.nextflow/
+/.mextflow.log/
+/.ipynb_checkpoints/
+/fastq_dir_to_samplesheet.py
