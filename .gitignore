@@ -13,3 +13,7 @@
 /notebooks/.ipynb_checkpoints/
 /notebooks/gene2go
 /notebooks/go-basic.obo
+
+# ignore output files 
+/DE_out/
+/output/
