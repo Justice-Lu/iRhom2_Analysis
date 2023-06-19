@@ -6,6 +6,7 @@
 
 /.nextflow/
 /.mextflow.log/
+*/.ipynb_checkpoints/
 /.ipynb_checkpoints/
 /fastq_dir_to_samplesheet.py
 
