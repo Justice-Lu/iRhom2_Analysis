@@ -1,9 +1,14 @@
+# ignore misc files 
+.DS_Store
+/Stephanie_poster/
+/papers/
+
 # ignore RNAseq files 
 /RNAseq_files/
 /RNAseq_out/ 
+/RNAseq/
 /samplesheets/
 /work/
-/Stephanie_poster/
 
 /.nextflow/
 /.mextflow.log/
