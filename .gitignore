@@ -2,6 +2,7 @@
 .DS_Store
 /Stephanie_poster/
 /papers/
+/presentation/
 
 # ignore RNAseq files 
 /RNAseq_files/
