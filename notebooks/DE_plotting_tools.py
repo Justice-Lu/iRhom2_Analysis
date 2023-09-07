@@ -12,12 +12,15 @@ from sklearn.decomposition import PCA
 def compare_vol_plot(DE_df_list: list, 
                      DE_df_name: list, 
                      fig_title = '', 
-                     fig_dimension = [700,500]):
+                     fig_dimension = None, 
+                     fig_fixed_range = False):
     
     assert len(DE_df_list) == len(DE_df_name), print("Please ensure DE_df_list and DE_df_name len matches")
     
-    fig = go.Figure()
+    # Initialize ranges for plots to prevent autosizing
+    xmin, xmax, ymin, ymax = 0, 0, 0, 0
     
+    fig = go.Figure()
     # Add traces of individual DE_df 
     for DE_df, DE_name in zip(DE_df_list, DE_df_name): 
         plot_df = DE_df.copy()
@@ -31,6 +34,12 @@ def compare_vol_plot(DE_df_list: list,
                                             opacity=0.3)
                                 )
                     )
+        if fig_fixed_range:
+            xmin =  min(plot_df['logFC'])*1.10 if min(plot_df['logFC']) < xmin else xmin
+            xmax =  max(plot_df['logFC'])*1.10 if max(plot_df['logFC']) > xmax else xmax
+            # ymin =  min(-np.log10(plot_df['FDR']))*1.10 if min(-np.log10(plot_df['FDR'])) < ymin else ymin  # ymin will be 0 anyways
+            ymax =  max(-np.log10(plot_df['FDR']))*1.10 if max(-np.log10(plot_df['FDR'])) > ymax else ymax
+
 
     # Add a line for FDR = 0.05
     fig.add_shape(type='line', x0=-10, x1=10,
@@ -43,14 +52,27 @@ def compare_vol_plot(DE_df_list: list,
         '<b>%{text}</b>' + 
         '<br>LogFC: %{x}'+
         '<br>FDR: %{y}<br>')
+    
+    # Define ranges to avoid autoresizing when hiding data
+    if fig_fixed_range:
+        # Center the data by taking the bigger value between xmin and xmax 
+        xmax = max(abs(xmin),abs(xmax))
+        fig.update_xaxes(range=[-xmax, xmax])
+        fig.update_yaxes(range=[-1, ymax])
 
-    fig.update_layout(
-        title=fig_title,
-        autosize=True,
-        width=fig_dimension[0],
-        height=fig_dimension[1],
-        template='simple_white'
-    )
+    if fig_dimension is None:
+        fig.update_layout(
+            title=fig_title,
+            autosize=True,
+            template='simple_white'
+        )
+    else: 
+        fig.update_layout(
+            title=fig_title,
+            width=fig_dimension[0],
+            height=fig_dimension[1],
+            template='simple_white'
+        )
     
     
     return fig 
