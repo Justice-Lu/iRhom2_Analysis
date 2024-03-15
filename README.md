@@ -17,6 +17,7 @@ Stephanie A. Azzopardi¹²³, Justice Lu⁴, Minakshi Rana³, Sebastien Monette�
 ### Manuscript
 
 ### Data
-
+Data deposited at GEOxxxxxx.\
+Code used to replicate data can be found in separate sections of `notebooks`
 ### Contact
 
