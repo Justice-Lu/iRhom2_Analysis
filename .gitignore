@@ -1,32 +1,36 @@
 # ignore misc files 
 .DS_Store
-./Stephanie_poster/
-./papers/
-./presentation/
+/Stephanie_poster/
+/papers/
+/presentation/
 
 # ignore RNAseq files 
-./RNAseq_files/
-./RNAseq_out/ 
-./RNAseq/
-./samplesheets/
-./work/
+/RNAseq_files/
+/RNAseq_out/ 
+/RNAseq/
+/samplesheets/
+/work/
 
 
 .nextflow.log*
-./.nextflow/
+.nextflow/
 */.ipynb_checkpoints/
-./.ipynb_checkpoints/
-./fastq_dir_to_samplesheet.py
-./null
+/.ipynb_checkpoints/
+/fastq_dir_to_samplesheet.py
+/null
 
 # ignore large GO files from notebooks 
-./notebooks/.ipynb_checkpoints/
-./notebooks/gene2go
-./notebooks/go-basic.obo
+/notebooks/.ipynb_checkpoints/
+/notebooks/__pycache__/
+/notebooks/gene2go
+/notebooks/go-basic.obo
+/notebooks/utils/osn/
+/notebooks/utils/act.py
+/notebooks/old/
 
 # ignore output files 
-./DE_out/
-./output/
+/DE_out/
+/output/
 
 # ignore downloaded csv. 
-./files/
+/files/
