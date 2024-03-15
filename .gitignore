@@ -25,6 +25,7 @@
 /notebooks/gene2go
 /notebooks/go-basic.obo
 /notebooks/utils/osn/
+/notebooks/utils/__pycache__/
 /notebooks/utils/act.py
 /notebooks/old/
 
