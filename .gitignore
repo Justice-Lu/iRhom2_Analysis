@@ -10,7 +10,7 @@
 /RNAseq/
 /samplesheets/
 /work/
-
+/geo_iRhom2/
 
 .nextflow.log*
 .nextflow/

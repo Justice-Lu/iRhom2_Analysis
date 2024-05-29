@@ -300,6 +300,7 @@ def add_p_value_annotation(fig,
                            y_padding = True, 
                            subplot=None, 
                            include_tstat=None, 
+                           p_round=3,
                            _format=dict(interline=0.07, text_height=1.07, color='black')):
     ''' Adds notations giving the p-value between two box plot data (t-test two-sided comparison)
     
@@ -391,9 +392,9 @@ def add_p_value_annotation(fig,
             )
        
         if include_tstat: 
-            symbol = format_pvalue(pvalue, t = tstat) 
+            symbol = format_pvalue(pvalue, p_round, t = tstat) 
         else: 
-            symbol = format_pvalue(pvalue)
+            symbol = format_pvalue(pvalue, p_round)
             
         if column_pair[0] != column_pair[1]: # If the column pair is the same, don't label lines
             # Vertical line
@@ -435,7 +436,7 @@ def add_p_value_annotation(fig,
         ))
     return fig
 
-def format_pvalue(pvalue, t = None):
+def format_pvalue(pvalue, p_round = 3, t = None):
     """
     Format a p-value as a string with significance symbols.
 
@@ -446,13 +447,13 @@ def format_pvalue(pvalue, t = None):
     str: The formatted p-value string with significance symbols.
     """
     if pvalue >= 0.05:
-        symbol = f'ns <br>p={round(pvalue, 3)}'
+        symbol = f'ns <br>p={round(pvalue, p_round)}'
     elif pvalue >= 0.01:
-        symbol = f'* <br>p={round(pvalue, 3)}'
+        symbol = f'* <br>p={round(pvalue, p_round)}'
     elif pvalue >= 0.001:
-        symbol = f'** <br>p={round(pvalue, 3)}'
+        symbol = f'** <br>p={round(pvalue, p_round)}'
     else:
-        symbol = f'*** <br>p={round(pvalue, 3)}'
+        symbol = f'*** <br>p={round(pvalue, p_round)}'
     
     if t is not None: 
         symbol += f'<br>t={round(t, 3)}'
@@ -464,9 +465,12 @@ from scipy.spatial import distance
 
 def umap_euclidean_distance(umap_df, 
                             by,
+                            coordinates = 'pca',
                             between='nostril', 
                             include_shuffle = True, 
                             shuffled_fraction = 0.3):
+    assert coordinates in ['pca', 'umap'], print('Please specify coordinates to be either pca or umap')
+    
     # Calculate pairwise distances
     distances = []
 
@@ -482,13 +486,18 @@ def umap_euclidean_distance(umap_df,
         
         for olfr in unique_top_Olfr:
             olfr_data = umap_df[umap_df['top_Olfr'] == olfr]
-            A_coords = olfr_data[olfr_data[between] == umap_df[between].unique()[0]][['umap_x', 'umap_y']].values
-            B_coords = olfr_data[olfr_data[between] == umap_df[between].unique()[1]][['umap_x', 'umap_y']].values
+            
+            if coordinates == 'pca': 
+                A_coords = olfr_data[olfr_data[between] == umap_df[between].unique()[0]][['pca_x', 'pca_y']].values
+                B_coords = olfr_data[olfr_data[between] == umap_df[between].unique()[1]][['pca_x', 'pca_y']].values
+            elif coordinates == 'umap':
+                A_coords = olfr_data[olfr_data[between] == umap_df[between].unique()[0]][['umap_x', 'umap_y']].values
+                B_coords = olfr_data[olfr_data[between] == umap_df[between].unique()[1]][['umap_x', 'umap_y']].values
 
             for A_point in A_coords:
                 for B_point in B_coords:
                     dist = distance.euclidean(A_point, B_point)
-                    distances.append({'top_Olfr': olfr, 'distance': dist, 'group': group})
+                    distances.append({'top_Olfr': olfr, f'{coordinates}_distance': dist, 'group': group})
 
     # Create a DataFrame with pairwise distances
     return pd.DataFrame(distances)
