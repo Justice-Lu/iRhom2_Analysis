@@ -15,9 +15,11 @@ Stephanie A. Azzopardi¹²³, Justice Lu⁴, Minakshi Rana³, Sebastien Monette�
 ⁸Department of Medicine, Weill Cornell Medicine, New York, NY; USA\
 
 ### Manuscript
+Int. J. Mol. Sci. 2024, 25(11), 6079; "https://doi.org/10.3390/ijms25116079"
 
 ### Data
-Data deposited at GEOxxxxxx.\
+The raw and processed RNA-Seq datasets generated as part of this study are available from NCBI GEO at GSE268171. \
 Code used to replicate data can be found in separate sections of `notebooks`
-### Contact
 
+### Contact
+hyjusticelu@gmail.com for further information and questions regarding to scripts and methodology. 
