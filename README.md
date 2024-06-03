@@ -3,7 +3,7 @@
 # Role of iRhom2 in Olfactory Sensory Neurons: Implications for Odorant Receptor Regulation
 
 ### Authors 
-Stephanie A. Azzopardi¹²³, Justice Lu⁴, Minakshi Rana³, Sebastien Monette⁵, Ariana Rabinowitsch¹⁶, Jane E. Salmon⁷⁸, Hiro Matsunami⁴, Carl P. Blobel³⁶⁸
+Stephanie A. Azzopardi¹²³†, Justice Lu⁴†, Minakshi Rana³, Sebastien Monette⁵, Ariana Rabinowitsch¹⁶, Jane E. Salmon⁷⁸, Hiro Matsunami⁴‡, Carl P. Blobel³⁶⁸‡
 
 ¹Tri-Institutional MD-PhD Program, New York, NY;\
 ²Physiology, Biophysics and Systems Biology Program, Weill Cornell Medicine, New York, NY;\
@@ -13,9 +13,11 @@ Stephanie A. Azzopardi¹²³, Justice Lu⁴, Minakshi Rana³, Sebastien Monette�
 ⁶Cell and Developmental Biology Program, Weill Cornell Medicine, New York, NY;\
 ⁷Autoimmunity and Inflammation Program, Hospital for Special Surgery, New York, NY;\
 ⁸Department of Medicine, Weill Cornell Medicine, New York, NY; USA\
+† These authors contributed equally to this work.\
+‡ These authors contributed equally to this work.\
 
 ### Manuscript
-Int. J. Mol. Sci. 2024, 25(11), 6079; "https://doi.org/10.3390/ijms25116079"
+Int. J. Mol. Sci. 2024, 25(11), 6079; https://doi.org/10.3390/ijms25116079
 
 ### Data
 The raw and processed RNA-Seq datasets generated as part of this study are available from NCBI GEO at GSE268171. \
